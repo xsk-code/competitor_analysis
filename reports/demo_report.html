@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anker PowerCore 20100 - Reddit 竞品分析报告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header .meta {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        .stat-card .label {
+            font-size: 14px;
+            color: #666;
+        }
+        .sentiment-bar {
+            display: flex;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .sentiment-bar .positive {
+            background-color: #10b981;
+            height: 100%;
+        }
+        .sentiment-bar .neutral {
+            background-color: #f59e0b;
+            height: 100%;
+        }
+        .sentiment-bar .negative {
+            background-color: #ef4444;
+            height: 100%;
+        }
+        .sentiment-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 14px;
+        }
+        .sentiment-legend .item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .sentiment-legend .color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .list-group {
+            list-style: none;
+        }
+        .list-group-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+        .priority-high {
+            border-left: 4px solid #ef4444;
+            padding-left: 15px;
+        }
+        .priority-medium {
+            border-left: 4px solid #f59e0b;
+            padding-left: 15px;
+        }
+        .priority-low {
+            border-left: 4px solid #10b981;
+            padding-left: 15px;
+        }
+        .post-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .post-card .title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .post-card .meta {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .post-card .comments {
+            font-size: 14px;
+            color: #555;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+        .badge-positive {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .badge-neutral {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        .badge-negative {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Anker PowerCore 20100 - Reddit 竞品分析报告</h1>
+            <div class="meta">
+                报告生成时间：2026-04-14 20:48:10 | 时间范围：week</div>
+        </div>
+        
+        <div class="content">
+            <!-- 统计概览 -->
+            <div class="section">
+                <h2>📊 统计概览</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="value">3</div>
+                        <div class="label">帖子数量</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">124</div>
+                        <div class="label">评论数量</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">159.7</div>
+                        <div class="label">平均分数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">60.0%</div>
+                        <div class="label">正面率</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 情感分析 -->
+            <div class="section">
+                <h2>🎭 情感分析</h2>
+                <div class="sentiment-bar">
+                    <div class="positive" style="width: 60.0%"></div>
+                    <div class="neutral" style="width: 25.0%"></div>
+                    <div class="negative" style="width: 15.0%"></div>
+                </div>
+                <div class="sentiment-legend">
+                    <div class="item">
+                        <span class="color" style="background-color: #10b981;"></span>
+                        <span>正面 (12)</span>
+                    </div>
+                    <div class="item">
+                        <span class="color" style="background-color: #f59e0b;"></span>
+                        <span>中性 (5)</span>
+                    </div>
+                    <div class="item">
+                        <span class="color" style="background-color: #ef4444;"></span>
+                        <span>负面 (3)</span>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 20px; margin-bottom: 10px;">关键词分析</h3>
+                <div style="margin-bottom: 15px;">
+                    <strong>正面关键词：</strong>
+                    
+                        <span class="badge badge-positive">容量大</span>
+                    
+                        <span class="badge badge-positive">耐用</span>
+                    
+                        <span class="badge badge-positive">品牌可靠</span>
+                    
+                        <span class="badge badge-positive">充电稳定</span>
+                    
+                        <span class="badge badge-positive">性价比</span>
+                    
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>负面关键词：</strong>
+                    
+                        <span class="badge badge-negative">重量大</span>
+                    
+                        <span class="badge badge-negative">充电速度慢</span>
+                    
+                        <span class="badge badge-negative">价格高</span>
+                    
+                </div>
+            </div>
+            
+            <!-- 主要抱怨点 -->
+            <div class="section">
+                <h2>😤 主要抱怨点 (Top 3)</h2>
+                <ul class="list-group">
+                    
+                        <li class="list-group-item">
+                            <strong>1. 重量偏大，不适合长时间携带</strong>
+                            <br>
+                            <span style="color: #666; font-size: 14px;">出现频率：高</span>
+                        </li>
+                    
+                        <li class="list-group-item">
+                            <strong>2. 充电速度一般，不支持最新的快充协议</strong>
+                            <br>
+                            <span style="color: #666; font-size: 14px;">出现频率：中</span>
+                        </li>
+                    
+                        <li class="list-group-item">
+                            <strong>3. 价格相对竞品较高</strong>
+                            <br>
+                            <span style="color: #666; font-size: 14px;">出现频率：中</span>
+                        </li>
+                    
+                </ul>
+            </div>
+            
+            <!-- 用户最关注的功能 -->
+            <div class="section">
+                <h2>🔍 用户最关注的功能 (Top 3)</h2>
+                <ul class="list-group">
+                    
+                        <li class="list-group-item">
+                            <strong>1. 大容量（20100mAh）</strong>
+                            <br>
+                            <span style="color: #666; font-size: 14px;">用户关注度：高</span>
+                        </li>
+                    
+                        <li class="list-group-item">
+                            <strong>2. 品牌可靠性和售后服务</strong>
+                            <br>
+                            <span style="color: #666; font-size: 14px;">用户关注度：高</span>
+                        </li>
+                    
+                        <li class="list-group-item">
+                            <strong>3. 多设备兼容性</strong>
+                            <br>
+                            <span style="color: #666; font-size: 14px;">用户关注度：中</span>
+                        </li>
+                    
+                </ul>
+            </div>
+            
+            <!-- 改进建议 -->
+            <div class="section">
+                <h2>💡 产品改进建议</h2>
+                <ul class="list-group">
+                    
+                        <li class="list-group-item priority-高">
+                            <strong>[高] 推出轻量化版本，使用更高密度的电池材料</strong>
+                            <br>
+                            <span style="color: #666; font-size: 14px;">预期效果：提升便携性，吸引更多需要轻装出行的用户</span>
+                        </li>
+                    
+                        <li class="list-group-item priority-高">
+                            <strong>[高] 升级充电协议，支持PD 3.0或更高版本的快充</strong>
+                            <br>
+                            <span style="color: #666; font-size: 14px;">预期效果：提升充电速度，满足现代设备的快充需求</span>
+                        </li>
+                    
+                        <li class="list-group-item priority-中">
+                            <strong>[中] 考虑推出不同容量版本，提供更多价格选择</strong>
+                            <br>
+                            <span style="color: #666; font-size: 14px;">预期效果：覆盖更广泛的预算区间，提升市场竞争力</span>
+                        </li>
+                    
+                        <li class="list-group-item priority-低">
+                            <strong>[低] 增加无线充电功能</strong>
+                            <br>
+                            <span style="color: #666; font-size: 14px;">预期效果：提升使用便利性，吸引无线充电用户</span>
+                        </li>
+                    
+                </ul>
+            </div>
+            
+            <!-- 竞品分析 -->
+            <div class="section">
+                <h2>🏆 竞品亮点分析</h2>
+                <p style="padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
+                    用户提到Aukey作为主要竞品，其优势在于价格更低。Anker的优势在于品牌知名度和产品质量。部分用户认为Anker的高价是合理的，因为质量和售后服务更好。
+                </p>
+            </div>
+            
+            <!-- 整体评价 -->
+            <div class="section">
+                <h2>📝 整体评价</h2>
+                <p style="padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
+                    Anker PowerCore 20100在Reddit上的口碑整体偏正面。用户主要赞赏其大容量和品牌可靠性，但也对重量和充电速度提出了一些抱怨。产品定位清晰，主要面向需要大容量充电宝的用户，但在便携性和快充方面有改进空间。
+                </p>
+            </div>
+            
+            <!-- 热门帖子 -->
+            <div class="section">
+                <h2>🔥 热门帖子 (Top 10)</h2>
+                
+                    <div class="post-card">
+                        <div class="title">Anker PowerCore 20100 - 我的旅行必备神器</div>
+                        <div class="meta">
+                            <span>作者：travel_lover</span> | 
+                            <span>Subreddit：backpacking</span> | 
+                            <span>分数：156</span> | 
+                            <span>评论数：23</span>
+                        </div>
+                        
+                            <div class="comments">
+                                <strong>部分评论：</strong>
+                                <ul style="margin-top: 5px; padding-left: 20px;">
+                                    
+                                        <li style="margin-bottom: 5px;">同意！我也有一个，确实很耐用。</li>
+                                    
+                                        <li style="margin-bottom: 5px;">重量确实是个问题，尤其是当你已经背着很多东西的时候。</li>
+                                    
+                                </ul>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="post-card">
+                        <div class="title">Anker vs Aukey - 哪个充电宝更好？</div>
+                        <div class="meta">
+                            <span>作者：shopping_help</span> | 
+                            <span>Subreddit：techsupport</span> | 
+                            <span>分数：89</span> | 
+                            <span>评论数：45</span>
+                        </div>
+                        
+                            <div class="comments">
+                                <strong>部分评论：</strong>
+                                <ul style="margin-top: 5px; padding-left: 20px;">
+                                    
+                                        <li style="margin-bottom: 5px;">我选Anker。虽然贵一点，但质量和售后服务都更好。我用了两年，一点问题都没有。</li>
+                                    
+                                        <li style="margin-bottom: 5px;">Aukey性价比更高。我有一个，用了一年也没什么问题。</li>
+                                    
+                                </ul>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="post-card">
+                        <div class="title">Anker PowerCore 20100 充电速度测试</div>
+                        <div class="meta">
+                            <span>作者：test_geek</span> | 
+                            <span>Subreddit：UsbCHardware</span> | 
+                            <span>分数：234</span> | 
+                            <span>评论数：56</span>
+                        </div>
+                        
+                            <div class="comments">
+                                <strong>部分评论：</strong>
+                                <ul style="margin-top: 5px; padding-left: 20px;">
+                                    
+                                        <li style="margin-bottom: 5px;">这个速度确实一般。现在很多新的充电宝支持更快的充电协议。</li>
+                                    
+                                        <li style="margin-bottom: 5px;">对我来说够用了。主要是容量大，速度是次要考虑。</li>
+                                    
+                                </ul>
+                            </div>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>本报告由跨境电商竞品监控系统自动生成</p>
+        </div>
+    </div>
+</body>
+</html>
