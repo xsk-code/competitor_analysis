@@ -171,13 +171,14 @@ class PullPushCollector:
         # 转换为epoch时间戳（整数）
         return int(after_time.timestamp())
     
-    def collect_product_data(self, product_name: str = None, use_historical: bool = True) -> Dict[str, Any]:
+    def collect_product_data(self, product_name: str = None, use_historical: bool = True, fetch_post_comments: bool = False) -> Dict[str, Any]:
         """
         收集产品的Reddit数据
         
         Args:
             product_name: 产品名称，如果为None则使用配置中的默认值
             use_historical: 是否使用历史数据（如果为True，不进行时间过滤）
+            fetch_post_comments: 是否获取每个帖子的评论（可能触发速率限制）
         
         Returns:
             包含产品数据和元信息的字典
@@ -206,18 +207,18 @@ class PullPushCollector:
         # 处理帖子数据，转换为统一格式
         processed_posts = []
         for post in posts:
-            # 获取帖子的评论
-            post_comments = self.get_post_comments(post.get("id"), limit=20)
-            
+            # 可选：获取帖子的评论（可能触发速率限制）
             processed_comments = []
-            for comment in post_comments:
-                processed_comments.append({
-                    "id": comment.get("id"),
-                    "author": comment.get("author", "Unknown"),
-                    "body": comment.get("body", ""),
-                    "score": comment.get("score", 0),
-                    "created_utc": datetime.fromtimestamp(comment.get("created_utc", 0)).isoformat() if comment.get("created_utc") else None
-                })
+            if fetch_post_comments:
+                post_comments = self.get_post_comments(post.get("id"), limit=10)
+                for comment in post_comments:
+                    processed_comments.append({
+                        "id": comment.get("id"),
+                        "author": comment.get("author", "Unknown"),
+                        "body": comment.get("body", ""),
+                        "score": comment.get("score", 0),
+                        "created_utc": datetime.fromtimestamp(comment.get("created_utc", 0)).isoformat() if comment.get("created_utc") else None
+                    })
             
             # 构建帖子信息
             post_info = {
@@ -237,6 +238,8 @@ class PullPushCollector:
         
         # 提取所有评论内容用于分析
         all_comments = []
+        
+        # 添加从帖子中获取的评论
         for post in processed_posts:
             all_comments.extend([c["body"] for c in post["comments"]])
         
