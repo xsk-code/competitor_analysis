@@ -5,7 +5,19 @@ import config
 
 class AIAnalyzer:
     def __init__(self):
-        self.client = openai.OpenAI(api_key=config.OPENAI_API_KEY)
+        # 构建OpenAI客户端参数
+        client_kwargs = {
+            "api_key": config.OPENAI_API_KEY
+        }
+        
+        # 如果配置了base_url，使用自定义的API端点（如硅基流动）
+        if config.OPENAI_BASE_URL:
+            client_kwargs["base_url"] = config.OPENAI_BASE_URL
+            print(f"使用自定义API端点: {config.OPENAI_BASE_URL}")
+            print(f"使用模型: {config.OPENAI_MODEL}")
+        
+        self.client = openai.OpenAI(**client_kwargs)
+        self.model = config.OPENAI_MODEL
     
     def analyze_sentiment(self, comments: List[str]) -> Dict[str, Any]:
         """
@@ -64,7 +76,7 @@ class AIAnalyzer:
         
         try:
             response = self.client.chat.completions.create(
-                model="gpt-4",
+                model=self.model,
                 messages=[
                     {"role": "system", "content": "你是一个专业的跨境电商评论分析师，擅长分析用户评论并提取有价值的信息。"},
                     {"role": "user", "content": prompt}
@@ -186,7 +198,7 @@ class AIAnalyzer:
         
         try:
             response = self.client.chat.completions.create(
-                model="gpt-4",
+                model=self.model,
                 messages=[
                     {"role": "system", "content": "你是一个经验丰富的跨境电商产品经理，擅长基于用户反馈生成产品改进建议。"},
                     {"role": "user", "content": prompt}
