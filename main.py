@@ -1,4 +1,5 @@
 from reddit_collector import RedditCollector
+from pullpush_collector import PullPushCollector
 from ai_analyzer import AIAnalyzer
 from html_generator import HTMLGenerator
 import config
@@ -14,6 +15,9 @@ def main():
                         help='时间范围')
     parser.add_argument('--limit', type=int, default=50, help='采集帖子数量限制')
     parser.add_argument('--output', type=str, help='输出HTML文件路径')
+    parser.add_argument('--collector', type=str, default='pullpush', 
+                        choices=['official', 'pullpush'],
+                        help='数据采集方式：official（官方API，需要申请）或 pullpush（免费第三方API，无需注册）')
     
     args = parser.parse_args()
     
@@ -30,7 +34,14 @@ def main():
     print("步骤1：采集Reddit数据")
     print("=" * 50)
     
-    collector = RedditCollector()
+    # 选择采集器
+    if args.collector == 'official':
+        print("使用官方API采集数据（需要配置Reddit API密钥）")
+        collector = RedditCollector()
+    else:
+        print("使用PullPush API采集数据（免费，无需注册）")
+        collector = PullPushCollector()
+    
     product_data = collector.collect_product_data()
     
     if product_data['statistics']['total_posts'] == 0:
